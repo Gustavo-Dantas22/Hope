@@ -17,10 +17,6 @@ const routes: VexRoutes = [
       {
         path: '',
         loadChildren: () => import('./social-profile/social-profile.module').then(m => m.SocialProfileModule)
-      },
-      {
-        path: 'timeline',
-        loadChildren: () => import('./social-timeline/social-timeline.module').then(m => m.SocialTimelineModule)
       }
     ]
   }
