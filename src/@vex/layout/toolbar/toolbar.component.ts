@@ -18,6 +18,7 @@ import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 import { PopoverService } from '../../components/popover/popover.service';
 import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import icSearch from '@iconify/icons-ic/twotone-search';
+import icHealing from '@iconify/icons-ic/healing';
 
 @Component({
   selector: 'vex-toolbar',
@@ -39,6 +40,7 @@ export class ToolbarComponent implements OnInit {
   isNavbarInToolbar$ = this.configService.config$.pipe(map(config => config.navbar.position === 'in-toolbar'));
   isNavbarBelowToolbar$ = this.configService.config$.pipe(map(config => config.navbar.position === 'below-toolbar'));
 
+  icHealing = icHealing;
   icSearch = icSearch;
   icBookmarks = icBookmarks;
   emojioneUS = emojioneUS;
@@ -54,9 +56,9 @@ export class ToolbarComponent implements OnInit {
   icArrowDropDown = icArrowDropDown;
 
   constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private navigationService: NavigationService,
-              private popoverService: PopoverService) { }
+    private configService: ConfigService,
+    private navigationService: NavigationService,
+    private popoverService: PopoverService) { }
 
   ngOnInit() {
   }
