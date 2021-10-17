@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { VexRoutes } from '../@vex/interfaces/vex-route.interface';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
+import { AuthGuardService } from './guards/auth-service.guard';
 
 const routes: VexRoutes = [
   {
@@ -18,6 +19,10 @@ const routes: VexRoutes = [
     loadChildren: () => import('./pages/pages/auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule),
   },
   {
+    path: 'auth/reset-password',
+    loadChildren: () => import('./pages/pages/auth/confirm-reset-password/confirm-reset-password.module').then(m => m.ConfirmResetPasswordModule),
+  },
+  {
     path: 'coming-soon',
     loadChildren: () => import('./pages/pages/coming-soon/coming-soon.module').then(m => m.ComingSoonModule),
   },
@@ -27,7 +32,7 @@ const routes: VexRoutes = [
     children: [
       {
         path: 'dashboards/analytics',
-        redirectTo: '/'
+        loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
       },
       {
         path: '',
@@ -75,7 +80,8 @@ const routes: VexRoutes = [
             path: 'editor',
             loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
           },
-        ]
+        ],
+        canActivate: [AuthGuardService]
       },
       {
         path: 'pages',
@@ -104,7 +110,8 @@ const routes: VexRoutes = [
             path: 'error-500',
             loadChildren: () => import('./pages/pages/errors/error-500/error-500.module').then(m => m.Error500Module)
           }
-        ]
+        ],
+        canActivate: [AuthGuardService]
       },
       {
         path: 'ui',
@@ -135,17 +142,21 @@ const routes: VexRoutes = [
             path: 'page-layouts',
             loadChildren: () => import('./pages/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule),
           },
-        ]
+        ],
+        canActivate: [AuthGuardService]
       },
       {
         path: 'documentation',
         loadChildren: () => import('./pages/documentation/documentation.module').then(m => m.DocumentationModule),
+        canActivate: [AuthGuardService]
       },
       {
         path: '**',
-        loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module)
+        loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module),
+        canActivate: [AuthGuardService]
       }
-    ]
+    ],
+    canActivate: [AuthGuardService]
   }
 ];
 

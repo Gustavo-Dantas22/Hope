@@ -11,12 +11,12 @@
       <h4 class="body-2 text-secondary m-0">Faça login com suas credenciais abaixo.</h4>
     </div>
 
-    <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
+    <div [formGroup]="loginForm" class="p-6" fxLayout="column" fxLayoutGap="16px">
       <div fxFlex="auto" fxLayout="column">
         <mat-form-field fxFlex="grow">
           <mat-label>E-Mail</mat-label>
           <input formControlName="email" matInput required>
-          <mat-error *ngIf="form.get('email').hasError('required')">É necessário inserir um e-mail para realizar login
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">É necessário inserir um e-mail para realizar login
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="grow">
@@ -27,7 +27,7 @@
             <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
           </button>
           <mat-hint>Clique no olho para visualizar a senha</mat-hint>
-          <mat-error *ngIf="form.get('password').hasError('required')">We need a password to log you in</mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">We need a password to log you in</mat-error>
         </mat-form-field>
       </div>
 

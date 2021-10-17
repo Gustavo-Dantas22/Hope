@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'vex-login',
@@ -17,7 +18,7 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+  loginForm: FormGroup;
 
   inputType = 'password';
   visible = false;
@@ -26,23 +27,31 @@ export class LoginComponent implements OnInit {
   icVisibilityOff = icVisibilityOff;
 
   constructor(private router: Router,
-              private fb: FormBuilder,
-              private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
-  ) {}
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef,
+    private _loginService: LoginService) { }
 
   ngOnInit() {
-    this.form = this.fb.group({
+    this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   send() {
-    this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
-      duration: 10000
-    });
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+
+    this._loginService.login(email, password)
+      .subscribe(
+        () => {
+          localStorage.setItem('HopeUserEmail', email);
+          window.location.href = '';
+        },
+        (err) => {
+          this.snackBar.open('Usuário ou senha incorreto', 'Ok');
+        });
   }
 
   toggleVisibility() {

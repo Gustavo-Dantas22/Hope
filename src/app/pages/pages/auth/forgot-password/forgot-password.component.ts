@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
 import icMail from '@iconify/icons-ic/twotone-mail';
+import { LoginService } from '../login/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'vex-forgot-password',
@@ -19,14 +20,21 @@ export class ForgotPasswordComponent implements OnInit {
   icMail = icMail;
 
   constructor(
-    private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _loginService: LoginService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
   }
 
   send() {
-    this.router.navigate(['/']);
+    const email = this.form.value.email;
+    if (!email) {
+      return;
+    }
+
+    this._loginService.sendPasswordResetEmail(email);
+    this.snackbar.open('Um e-mail com as instruções para recuperar sua senha foi enviado!', 'Ok');
   }
 }

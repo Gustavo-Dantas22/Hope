@@ -11,10 +11,13 @@ import icPerson from '@iconify/icons-ic/twotone-person';
 export class ToolbarUserComponent implements OnInit {
 
   dropdownOpen: boolean;
+  userEmail: string;
   icPerson = icPerson;
 
   constructor(private popover: PopoverService,
-              private cd: ChangeDetectorRef) { }
+              private cd: ChangeDetectorRef) {
+    this.userEmail = localStorage.getItem('HopeUserEmail');
+  }
 
   ngOnInit() {
   }

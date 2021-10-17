@@ -2,15 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { MenuItem } from '../interfaces/menu-item.interface';
 import { trackById } from '../../../../utils/track-by';
 import icPerson from '@iconify/icons-ic/twotone-person';
+import icLogout from '@iconify/icons-ic/twotone-logout';
 import icSettings from '@iconify/icons-ic/twotone-settings';
 import icAccountCircle from '@iconify/icons-ic/twotone-account-circle';
-import icMoveToInbox from '@iconify/icons-ic/twotone-move-to-inbox';
-import icListAlt from '@iconify/icons-ic/twotone-list-alt';
-import icTableChart from '@iconify/icons-ic/twotone-table-chart';
-import icCheckCircle from '@iconify/icons-ic/twotone-check-circle';
-import icAccessTime from '@iconify/icons-ic/twotone-access-time';
-import icDoNotDisturb from '@iconify/icons-ic/twotone-do-not-disturb';
-import icOfflineBolt from '@iconify/icons-ic/twotone-offline-bolt';
 import icChevronRight from '@iconify/icons-ic/twotone-chevron-right';
 import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 import icBusiness from '@iconify/icons-ic/twotone-business';
@@ -19,6 +13,7 @@ import icLock from '@iconify/icons-ic/twotone-lock';
 import icNotificationsOff from '@iconify/icons-ic/twotone-notifications-off';
 import { Icon } from '@visurel/iconify-angular';
 import { PopoverRef } from '../../../../components/popover/popover-ref';
+import { LoginService } from 'src/app/pages/pages/auth/login/login.service';
 
 export interface OnlineStatus {
   id: 'online' | 'away' | 'dnd' | 'offline';
@@ -35,69 +30,17 @@ export interface OnlineStatus {
 })
 export class ToolbarUserDropdownComponent implements OnInit {
 
+  userEmail: string;
   items: MenuItem[] = [
     {
       id: '1',
       icon: icAccountCircle,
-      label: 'My Profile',
-      description: 'Personal Information',
+      label: 'Perfil',
+      description: 'Informações pessoais',
       colorClass: 'text-teal',
       route: '/apps/social'
-    },
-    {
-      id: '2',
-      icon: icMoveToInbox,
-      label: 'My Inbox',
-      description: 'Messages & Latest News',
-      colorClass: 'text-primary',
-      route: '/apps/chat'
-    },
-    {
-      id: '3',
-      icon: icListAlt,
-      label: 'My Projects',
-      description: 'Tasks & Active Projects',
-      colorClass: 'text-amber',
-      route: '/apps/scrumboard'
-    },
-    {
-      id: '4',
-      icon: icTableChart,
-      label: 'Billing Information',
-      description: 'Pricing & Current Plan',
-      colorClass: 'text-purple',
-      route: '/pages/pricing'
     }
   ];
-
-  statuses: OnlineStatus[] = [
-    {
-      id: 'online',
-      label: 'Online',
-      icon: icCheckCircle,
-      colorClass: 'text-green'
-    },
-    {
-      id: 'away',
-      label: 'Away',
-      icon: icAccessTime,
-      colorClass: 'text-orange'
-    },
-    {
-      id: 'dnd',
-      label: 'Do not disturb',
-      icon: icDoNotDisturb,
-      colorClass: 'text-red'
-    },
-    {
-      id: 'offline',
-      label: 'Offline',
-      icon: icOfflineBolt,
-      colorClass: 'text-gray'
-    }
-  ];
-
-  activeStatus: OnlineStatus = this.statuses[0];
 
   trackById = trackById;
   icPerson = icPerson;
@@ -108,19 +51,23 @@ export class ToolbarUserDropdownComponent implements OnInit {
   icVerifiedUser = icVerifiedUser;
   icLock = icLock;
   icNotificationsOff = icNotificationsOff;
+  icLogout = icLogout;
 
   constructor(private cd: ChangeDetectorRef,
-              private popoverRef: PopoverRef<ToolbarUserDropdownComponent>) { }
+    private _loginService: LoginService,
+    private popoverRef: PopoverRef<ToolbarUserDropdownComponent>) {
+    this.userEmail = localStorage.getItem('HopeUserEmail');
+  }
 
   ngOnInit() {
   }
 
-  setStatus(status: OnlineStatus) {
-    this.activeStatus = status;
-    this.cd.markForCheck();
-  }
-
   close() {
     this.popoverRef.close();
+  }
+
+  logout() {
+    this._loginService.logout();
+    window.location.href = '/login';
   }
 }

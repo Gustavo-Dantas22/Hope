@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
-import { ForgotPasswordComponent } from './forgot-password.component';
+import { ConfirmResetPasswordComponent } from './confirm-reset-password.component';
+import { ConfirmResetPasswordRoutingModule } from './confirm-reset-password-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { IconModule } from '@visurel/iconify-angular';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { IconModule } from '@visurel/iconify-angular';
 
 @NgModule({
-  declarations: [ForgotPasswordComponent],
   imports: [
     CommonModule,
-    ForgotPasswordRoutingModule,
+    ConfirmResetPasswordRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -24,7 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     IconModule,
     MatIconModule,
     MatSnackBarModule
-  ]
+  ],
+  declarations: [ConfirmResetPasswordComponent]
 })
-export class ForgotPasswordModule {
-}
+export class ConfirmResetPasswordModule { }
