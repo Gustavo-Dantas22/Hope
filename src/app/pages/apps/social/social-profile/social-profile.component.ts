@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FriendSuggestion } from '../social.component';
 import { friendSuggestions } from '../../../../../static-data/friend-suggestions';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
 import { fadeInRight400ms } from '../../../../../@vex/animations/fade-in-right.animation';
@@ -13,6 +12,9 @@ import icWork from '@iconify/icons-ic/twotone-work';
 import icPhone from '@iconify/icons-ic/twotone-phone';
 import icPersonAdd from '@iconify/icons-ic/twotone-person-add';
 import icCheck from '@iconify/icons-ic/twotone-check';
+import icEdit from '@iconify/icons-ic/twotone-edit';
+import { MatDialog } from '@angular/material/dialog';
+import { SocialProfileEditComponent } from '../components/social-profile-edit/social-profile-edit.component';
 
 @Component({
   selector: 'vex-social-profile',
@@ -37,21 +39,17 @@ export class SocialProfileComponent implements OnInit {
   icAccessTime = icAccessTime;
   icAdd = icAdd;
   icWhatshot = icWhatshot;
+  icEdit = icEdit;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  addFriend(friend: FriendSuggestion) {
-    friend.added = true;
-  }
-
-  removeFriend(friend: FriendSuggestion) {
-    friend.added = false;
-  }
-
-  trackByName(index: number, friend: FriendSuggestion) {
-    return friend.name;
+  openProfileEdit(id) {
+    this.dialog.open(SocialProfileEditComponent, {
+      data: id || null,
+      width: '600px'
+    });
   }
 }

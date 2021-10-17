@@ -2,7 +2,13 @@
   <div class="flex-auto">
     <div class="card">
       <div class="px-gutter py-4 border-b">
-        <h2 class="title m-0">Informações</h2>
+        <div fxLayoutAlign="space-between">
+          <h2 class="title m-0">Informações</h2>
+
+          <button (click)="openProfileEdit('')" mat-menu-item>
+            <mat-icon color="primary" [icIcon]="icEdit"></mat-icon>
+          </button>
+        </div>
       </div>
 
       <div class="px-gutter py-4" gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="16px">

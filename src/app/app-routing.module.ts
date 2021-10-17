@@ -60,13 +60,6 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
           },
           {
-            path: 'calendar',
-            loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
-            data: {
-              toolbarShadowEnabled: true
-            }
-          },
-          {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
           },
