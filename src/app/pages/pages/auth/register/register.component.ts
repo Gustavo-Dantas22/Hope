@@ -4,6 +4,7 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'vex-register',
@@ -24,13 +25,13 @@ export class RegisterComponent implements OnInit {
   icVisibilityOff = icVisibilityOff;
 
   constructor(private router: Router,
-              private fb: FormBuilder,
-              private cd: ChangeDetectorRef
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private _loginService: LoginService,
   ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       passwordConfirm: ['', Validators.required],
@@ -38,7 +39,20 @@ export class RegisterComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/']);
+    const pws = this.form.value.password;
+    const pwsConfirm = this.form.value.passwordConfirm;
+    const email = this.form.value.email;
+
+    if (pws === pwsConfirm) {
+      this._loginService.createAccount(email, pws)
+        .then(() => {
+          this.router.navigate(['/login']);
+        })
+        .catch((err) => {
+          console.log('erro', err);
+        });
+    }
+
   }
 
   toggleVisibility() {
