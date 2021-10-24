@@ -87,8 +87,8 @@ const routes: VexRoutes = [
         path: 'pages',
         children: [
           {
-            path: 'pricing',
-            loadChildren: () => import('./pages/pages/pricing/pricing.module').then(m => m.PricingModule)
+            path: 'medicamentos-e-sintomas',
+            loadChildren: () => import('./pages/pages/medicamento-sintomas/medicamento-sintomas.module').then(m => m.MedicamentoSintomasModule)
           },
           {
             path: 'faq',

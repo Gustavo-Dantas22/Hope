@@ -86,7 +86,7 @@ export class AppComponent {
             type: 'link',
             label: 'Medicamentos e Sintomas',
             icon: icHealing,
-            route: '/pages/pricing',
+            route: '/pages/medicamentos-e-sintomas',
           },
         ]
       }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { PricingComponent } from './pricing.component';
+import { PricingComponent } from './medicamento-sintomas.component';
 
 describe('PricingComponent', () => {
   let component: PricingComponent;

@@ -1,0 +1,32 @@
+<form [formGroup]="sintomasForm">
+  <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+      <mat-icon [icIcon]="icClose"></mat-icon>
+    </button>
+  </div>
+
+  <mat-divider class="-mx-6 text-border"></mat-divider>
+
+  <mat-dialog-content fxLayout="column">
+    <mat-form-field class="mt-6">
+      <mat-label>Nome</mat-label>
+      <input cdkFocusInitial formControlName="nome" autocomplete="off" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Duração</mat-label>
+      <input formControlName="duracao" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Observação</mat-label>
+      <textarea type="text" formControlName="observacao" matInput>
+        </textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">CANCELAR</button>
+    <button color="primary" mat-button type="submit" (click)="send()">ADICIONAR</button>
+  </mat-dialog-actions>
+</form>
