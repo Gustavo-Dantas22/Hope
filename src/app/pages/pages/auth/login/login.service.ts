@@ -40,11 +40,8 @@ export class LoginService {
         this._angularFireAuth.signOut();
     }
 
-    getUser(): Observable<User> {
-        return this._angularFireAuth.authState
-            .pipe(
-                switchMap((u) => u ? this.userCollection.doc<User>(u.uid).valueChanges() : of(null))
-            );
+    getEmail(): string {
+        return localStorage.getItem('HopeUserEmail');
     }
 
     authenticated(): Observable<boolean> {

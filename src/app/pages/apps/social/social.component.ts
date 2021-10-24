@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Link } from '../../../../@vex/interfaces/link.interface';
 import { scaleIn400ms } from '../../../../@vex/animations/scale-in.animation';
 import { fadeInRight400ms } from '../../../../@vex/animations/fade-in-right.animation';
+import { SocialService } from './social.service';
+import { LoginService } from '../../pages/auth/login/login.service';
+import { Perfil } from 'src/app/models/perfil.model';
 
 export interface FriendSuggestion {
   name: string;
@@ -20,31 +22,27 @@ export interface FriendSuggestion {
   ]
 })
 export class SocialComponent implements OnInit {
+  perfil: Perfil = {
+    nome: 'Carregando',
+    cpf: 'Carregando',
+    dataNasc: new Date(),
+    email: 'Carregando'
+  };
 
-  links: Link[] = [
-    {
-      label: 'ABOUT',
-      route: './',
-      routerLinkActiveOptions: { exact: true }
-    },
-    {
-      label: 'TIMELINE',
-      route: './timeline'
-    },
-    {
-      label: 'FRIENDS',
-      route: '',
-      disabled: true
-    },
-    {
-      label: 'PHOTOS',
-      route: '',
-      disabled: true
-    }
-  ];
+  constructor(private _socialService: SocialService,
+    private _loginService: LoginService) { }
 
-  constructor() { }
+  ngOnInit(): void {
+    const email = this._loginService.getEmail();
+    this.recuperaPerfil(email);
+  }
 
-  ngOnInit() {
+  recuperaPerfil(email: string): void {
+    this._socialService.getPerfil(email)
+      .subscribe(
+        (perfil) => {
+          this.perfil = perfil[0];
+        }
+      );
   }
 }

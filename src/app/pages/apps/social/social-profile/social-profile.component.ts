@@ -15,6 +15,13 @@ import icCheck from '@iconify/icons-ic/twotone-check';
 import icEdit from '@iconify/icons-ic/twotone-edit';
 import { MatDialog } from '@angular/material/dialog';
 import { SocialProfileEditComponent } from '../components/social-profile-edit/social-profile-edit.component';
+import { Perfil } from 'src/app/models/perfil.model';
+import { LoginService } from 'src/app/pages/pages/auth/login/login.service';
+import { SocialService } from '../social.service';
+import icPerson from '@iconify/icons-ic/twotone-person';
+import icShield from '@iconify/icons-ic/twotone-shield';
+import icCake from '@iconify/icons-ic/cake';
+
 
 @Component({
   selector: 'vex-social-profile',
@@ -40,10 +47,29 @@ export class SocialProfileComponent implements OnInit {
   icAdd = icAdd;
   icWhatshot = icWhatshot;
   icEdit = icEdit;
+  icPerson = icPerson;
+  icShield = icShield;
+  icCake = icCake;
 
-  constructor(private dialog: MatDialog) { }
+  perfil: Perfil;
+
+  constructor(
+    private dialog: MatDialog,
+    private _socialService: SocialService,
+    private _loginService: LoginService) { }
 
   ngOnInit(): void {
+    const email = this._loginService.getEmail();
+    this.recuperaPerfil(email);
+  }
+
+  recuperaPerfil(email: string): void {
+    this._socialService.getPerfil(email)
+      .subscribe(
+        (perfil) => {
+          this.perfil = perfil[0];
+        }
+      );
   }
 
   openProfileEdit(id) {

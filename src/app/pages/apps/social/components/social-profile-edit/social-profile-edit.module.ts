@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
     MatMenuModule,
     MatButtonModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule,
   ],
   declarations: [SocialProfileEditComponent],
   entryComponents: [SocialProfileEditComponent]

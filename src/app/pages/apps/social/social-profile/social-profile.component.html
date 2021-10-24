@@ -15,48 +15,36 @@
         <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
           <div @scaleIn
             class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-            <ic-icon [icon]="icPhone" size="20px"></ic-icon>
+            <ic-icon [icon]="icShield" size="20px"></ic-icon>
           </div>
 
           <div @fadeInRight>
-            <p class="m-0 body-1">+1 (930) 502-3182</p>
-            <p class="m-0 caption text-hint">Business</p>
+            <p class="m-0 body-1">{{perfil.cpf || 'CPF não informado'}}</p>
+            <p class="m-0 caption text-hint">CPF</p>
           </div>
         </div>
 
         <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
           <div @scaleIn
             class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-            <ic-icon [icon]="icWork" size="20px"></ic-icon>
+            <ic-icon [icon]="icCake" size="20px"></ic-icon>
           </div>
 
           <div @fadeInRight>
-            <p class="m-0 body-1">Web Developer at IceCube</p>
-            <p class="m-0 caption text-hint">Previously Designer at HotStuff</p>
+            <p class="m-0 body-1">{{perfil.dataNasc}}</p>
+            <p class="m-0 caption text-hint">Data Nascimento</p>
           </div>
         </div>
 
         <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
           <div @scaleIn
             class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-            <ic-icon [icon]="icMail" size="20px"></ic-icon>
+            <ic-icon [icon]="icPerson" size="20px"></ic-icon>
           </div>
 
           <div @fadeInRight>
-            <p class="m-0 body-1">david.smith@example.com</p>
-            <p class="m-0 caption text-hint">Business inquiries only</p>
-          </div>
-        </div>
-
-        <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
-          <div @scaleIn
-            class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-            <ic-icon [icon]="icAccessTime" size="20px"></ic-icon>
-          </div>
-
-          <div @fadeInRight>
-            <p class="m-0 body-1">Usually available 9am-5pm</p>
-            <p class="m-0 caption text-hint">Call +1 (930) 242-5186 for important things</p>
+            <p class="m-0 body-1">{{perfil.nome}}</p>
+            <p class="m-0 caption text-hint">Nome</p>
           </div>
         </div>
       </div>

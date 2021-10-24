@@ -1,6 +1,6 @@
-<form>
+<form [formGroup]="editPerfilForm">
   <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
-    <h2 class="headline m-0" fxFlex="auto">David Smith</h2>
+    <h2 class="headline m-0" fxFlex="auto">{{perfil.nome}}</h2>
 
     <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
       <mat-icon [icIcon]="icClose"></mat-icon>
@@ -11,36 +11,30 @@
 
   <mat-dialog-content fxLayout="column">
     <mat-form-field class="mt-6">
-      <mat-label>Name</mat-label>
-      <input cdkFocusInitial formControlName="name" matInput>
+      <mat-label>CPF</mat-label>
+      <input cdkFocusInitial formControlName="cpf"
+        autocomplete="off" placeholder="000.000.000-00" matInput>
+
+      <mat-icon [icIcon]="icShield" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input formControlName="nome" matInput>
 
       <mat-icon [icIcon]="icPerson" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Phone</mat-label>
-      <input formControlName="phone" matInput>
+      <mat-label>Data Nascimento</mat-label>
+      <input type="date" formControlName="dataNasc" matInput>
 
-      <mat-icon [icIcon]="icPhone" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>E-Mail</mat-label>
-      <input formControlName="email" matInput>
-
-      <mat-icon [icIcon]="icEmail" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Company</mat-label>
-      <input formControlName="company" matInput>
-
-      <mat-icon [icIcon]="icBusiness" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
+      <mat-icon [icIcon]="icCake" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
     </mat-form-field>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close type="button">CANCELAR</button>
-    <button color="primary" mat-button type="submit">SALVAR ALTERAÇÕES</button>
+    <button color="primary" mat-button type="submit" (click)="send()">SALVAR ALTERAÇÕES</button>
   </mat-dialog-actions>
 </form>
