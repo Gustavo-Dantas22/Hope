@@ -1,8 +1,10 @@
 export interface Remedios {
     id?: string;
     nome: string;
-    tempoDeUso: Date;
+    dataInicio: Date;
     dosagem: string;
-    frequencia: string;
+    frequencia: number;
+    recorrencia: number;
+    times: number;
     email: string;
 }

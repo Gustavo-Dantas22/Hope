@@ -40,8 +40,29 @@ export class MedicamentoSintomasService {
         return this.remediosCollection.doc(remedio.id).delete();
     }
 
-    subscribe(sub) {
-        return this.http.post('http://localhost:5000/subscribe', sub);
+    removerAgenda(remedio: Remedios): Observable<any> {
+        const remedioToRemoveModel = {
+            name: remedio.nome,
+            times: remedio.recorrencia,
+            id: remedio.id
+        }
+
+        return this.http.post('http://localhost:5000/medicine/remove', remedioToRemoveModel);
+    }
+
+    agendar(remedio: Remedios, email: string): Observable<any> {
+        const remedioModel = {
+            name: remedio.nome,
+            dosage: remedio.dosagem,
+            startDate: remedio.dataInicio,
+            recurringHours: remedio.recorrencia,
+            medicineFrequency: +remedio.frequencia,
+            times: remedio.times,
+            email: email,
+            id: remedio.id
+        }
+
+        return this.http.post('http://localhost:5000/medicine', remedioModel);
     }
 
     getSintomas(email: string): Observable<Sintomas[]> {

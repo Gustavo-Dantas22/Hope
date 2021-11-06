@@ -1,4 +1,4 @@
-import { FaqComponent } from './../faq/faq.component';
+import icTimer from '@iconify/icons-ic/twotone-timer';
 import { Component, OnInit } from '@angular/core';
 import icBeenhere from '@iconify/icons-ic/twotone-beenhere';
 import icStars from '@iconify/icons-ic/twotone-stars';
@@ -15,7 +15,7 @@ import { Sintomas } from 'src/app/models/sintomas.model';
 import { MatDialog } from '@angular/material/dialog';
 import { RemediosFormComponent } from './components/remedios-edit/remedios-form.component';
 import { SintomasEditComponent } from './components/sintomas-edit/sintomas-edit.component';
-import { SwPush } from '@angular/service-worker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'vex-medicamento-sintomas',
@@ -41,49 +41,17 @@ export class MedicamentoSintomasComponent implements OnInit {
   icMail = icMail;
   icMedication = icMedication;
   icThermostat = icThermostat;
+  icTimer = icTimer;
 
-  constructor(private _medicamentoSintomasService: MedicamentoSintomasService,
-              private swPush: SwPush,
-              private dialog: MatDialog) { }
+  constructor(
+    private _medicamentoSintomasService: MedicamentoSintomasService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.email = localStorage.getItem('HopeUserEmail');
     this.recuperarRemedios();
     this.recuperarSintomas();
-
-    if (navigator.serviceWorker) {
-      // First, do a one-off check if there's currently a service worker in control.
-
-      if (navigator.serviceWorker.controller) {
-        console.log(`This page is currently controlled by: ${navigator.serviceWorker.controller}`);
-        navigator.serviceWorker.controller.onstatechange = function() {
-          console.log('state' + navigator.serviceWorker.controller.state);
-        };
-      } else {
-        // This happens on ctrl+f5(force refresh)
-        console.log('This page is not currently controlled by a service worker.');
-        navigator.serviceWorker.register('./ngsw-worker.js').then(function(registration) {
-          console.log('Service worker registration succeeded:', registration);
-          window.location.reload();
-        })
-          // tslint:disable-next-line: only-arrow-functions
-          // tslint:disable-next-line: no-unused-expression
-          // tslint:disable-next-line: only-arrow-functions
-          // tslint:disable-next-line: no-unused-expression
-          , function(error: any) {
-            console.log('Service worker registration failed:', error);
-          };
-      }
-      // Then, register a handler to detect when a new or
-      // updated service worker takes control.
-      // tslint:disable-next-line: only-arrow-functions
-      navigator.serviceWorker.oncontrollerchange = function() {
-        console.log('This page is now controlled by:', navigator.serviceWorker.controller);
-      };
-    }
-    else {
-      console.log('Service workers are not supported.');
-    }
   }
 
   recuperarRemedios() {
@@ -109,23 +77,40 @@ export class MedicamentoSintomasComponent implements OnInit {
   }
 
   removerRemedio(remedio): void {
-    this._medicamentoSintomasService.removerRemedio(remedio);
+    this._medicamentoSintomasService.removerAgenda(remedio)
+      .subscribe(() => {
+        this.snackBar.open('Os alarmes para o remédio removido foram deletados!', 'Ok');
+        this._medicamentoSintomasService.removerRemedio(remedio);
+      })
   }
 
   removerSintomas(sintoma): void {
     this._medicamentoSintomasService.removerSintoma(sintoma);
   }
 
-  notification(): void {
-    if (this.swPush.isEnabled) {
-      this.swPush.notificationClicks.subscribe(x => console.log(x), err => console.log(err));
-      this.swPush.requestSubscription({
-        serverPublicKey: this.vapidKeys
-      })
-        .then(sub => {
-          this._medicamentoSintomasService.subscribe(sub).subscribe(x => console.log(x), err => console.log(err));
-        })
-        .catch(err => console.error('Could not subscribe to notifications', err));
+  agendarRemedio(remedio): void {
+    this._medicamentoSintomasService.agendar(remedio, this.email)
+      .subscribe(() => {
+        this.snackBar.open('Adicionado alarme para o remédio!', 'Ok');
+      });
+  }
+
+  dateFormatter(data): string {
+    return new Date(data).toLocaleString('pt-BR');
+  }
+
+  frequenciaFormatter(frequencia): string {
+    if (frequencia === 0) {
+      return 'Diária';
     }
+
+    if (frequencia === 1) {
+      return 'Semanal';
+    }
+
+    if (frequencia === 2) {
+      return 'Mensal';
+    }
+
   }
 }

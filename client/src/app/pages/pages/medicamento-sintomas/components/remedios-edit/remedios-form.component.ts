@@ -27,8 +27,10 @@ export class RemediosFormComponent implements OnInit {
       id: ['', Validators.required],
       nome: ['', Validators.required],
       dosagem: ['', Validators.required],
-      tempoDeUso: ['', Validators.required],
+      dataInicio: ['', Validators.required],
       frequencia: ['', Validators.required],
+      recorrencia: [0, Validators.required],
+      times: [0, Validators.required],
       email: [localStorage.getItem('HopeUserEmail'), Validators.required],
     });
   }

@@ -19,13 +19,27 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Tempo de Uso</mat-label>
-      <input type="date" formControlName="tempoDeUso" matInput>
+      <mat-label>Data de Início</mat-label>
+      <input type="datetime-local" formControlName="dataInicio" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Recorrência (Horas)</mat-label>
+      <input type="number" formControlName="recorrencia" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Número de vezes</mat-label>
+      <input type="number" formControlName="times" matInput>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Frequência</mat-label>
-      <input formControlName="frequencia" matInput>
+      <mat-select formControlName="frequencia">
+        <mat-option value="{{0}}">Diária</mat-option>
+        <mat-option value="{{1}}">Semanal</mat-option>
+        <mat-option value="{{2}}">Mensal</mat-option>
+      </mat-select>
     </mat-form-field>
   </mat-dialog-content>
 

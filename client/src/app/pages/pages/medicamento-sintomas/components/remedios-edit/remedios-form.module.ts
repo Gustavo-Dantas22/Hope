@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RemediosFormComponent } from './remedios-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import { RemediosFormComponent } from './remedios-form.component';
         MatButtonModule,
         MatNativeDateModule,
         MatSnackBarModule,
+        MatSelectModule
     ],
     declarations: [RemediosFormComponent],
     entryComponents: [RemediosFormComponent]

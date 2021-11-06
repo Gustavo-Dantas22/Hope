@@ -6,13 +6,6 @@
 
   <div class="my-12 container" fxLayout="row" fxLayoutAlign="space-between" fxLayoutAlign.xs="start stretch">
 
-    <div fxLayout="row" fxLayoutAlign="center center" class="p-6">
-      <button (click)="notification()" class="rounded-full max-w-full w-200" color="warn" mat-raised-button
-        type="button">
-        BOTÃO MÁGICO
-      </button>
-    </div>
-
     <div fxLayout="column" fxFlex="45">
       <h2 @fadeInUp class="mt-0 text-center">Remédios</h2>
 
@@ -25,10 +18,19 @@
           </div>
 
           <h2 class="headline my-6">{{remedio.nome}}</h2>
-          <div class="body-1"><span class="body-2">{{remedio.tempoDeUso}}</span></div>
-          <div class="body-1"><span class="body-2">{{remedio.frequencia}}</span></div>
+          <div class="body-1"><span class="body-2">{{dateFormatter(remedio.dataInicio)}}</span></div>
+          <div class="body-1">
+            <span class="body-2">
+              {{frequenciaFormatter(+remedio.frequencia)}}
+            </span>
+          </div>
           <h3 class="display-2 font-bold my-6"><span
               class="text-secondary headline align-top">{{remedio.dosagem}}</span></h3>
+
+          <div fxLayout="row" fxLayoutAlign="center center" class="p-6">
+            <ic-icon [icon]="icTimer" size="36px" class="text-primary timer-icon" (click)="agendarRemedio(remedio)">
+            </ic-icon>
+          </div>
 
           <div fxLayout="row" fxLayoutAlign="center center" class="p-6">
             <button (click)="removerRemedio(remedio)" class="rounded-full max-w-full w-200" color="warn"

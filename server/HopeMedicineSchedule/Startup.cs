@@ -29,7 +29,7 @@ namespace HopeMedicineSchedule
             services.AddTransient<IEmailSender, AuthSender>();
             services.AddControllers();
             
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://nilo:teste123@hope.hqyrv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://HopeDb:ICskTSrP4CWmFyBu@cluster0.ezz3d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var client = new MongoClient(settings);
 
             services.AddHangfire(configuration => configuration
