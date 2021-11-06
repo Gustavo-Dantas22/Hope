@@ -91,6 +91,10 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/pages/medicamento-sintomas/medicamento-sintomas.module').then(m => m.MedicamentoSintomasModule)
           },
           {
+            path: 'humor',
+            loadChildren: () => import('./pages/pages/humor/humor.module').then(m => m.HumorModule)
+          },
+          {
             path: 'faq',
             loadChildren: () => import('./pages/pages/faq/faq.module').then(m => m.FaqModule)
           },

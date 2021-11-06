@@ -8,6 +8,7 @@ import icLayers from '@iconify/icons-ic/twotone-layers';
 import icChat from '@iconify/icons-ic/twotone-chat';
 import icPersonOutline from '@iconify/icons-ic/twotone-person-outline';
 import icHealing from '@iconify/icons-ic/healing';
+import icEmojiEmotions from '@iconify/icons-ic/twotone-emoji-emotions';
 import { LayoutService } from '../@vex/services/layout.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
@@ -87,6 +88,12 @@ export class AppComponent {
             label: 'Medicamentos e Sintomas',
             icon: icHealing,
             route: '/pages/medicamentos-e-sintomas',
+          },
+          {
+            type: 'link',
+            label: 'Humor',
+            icon: icEmojiEmotions,
+            route: '/pages/humor',
           },
         ]
       }
