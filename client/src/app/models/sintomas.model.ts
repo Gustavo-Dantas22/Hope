@@ -1,7 +1,8 @@
 export interface Sintomas {
     id?: string;
     nome: string;
-    duracao: string;
+    dataInicio: string;
+    dataFim: string;
     observacao: string;
     email: string;
 }

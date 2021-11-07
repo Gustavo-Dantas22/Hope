@@ -47,6 +47,18 @@
             <p class="m-0 caption text-hint">Nome</p>
           </div>
         </div>
+
+        <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+          <div @scaleIn
+            class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+            <ic-icon [icon]="icPerson" size="20px"></ic-icon>
+          </div>
+
+          <div @fadeInRight>
+            <p class="m-0 body-1">{{perfil.email}}</p>
+            <p class="m-0 caption text-hint">Email</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

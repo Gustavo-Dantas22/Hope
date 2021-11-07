@@ -12,8 +12,7 @@
   <mat-dialog-content fxLayout="column">
     <mat-form-field class="mt-6">
       <mat-label>CPF</mat-label>
-      <input cdkFocusInitial formControlName="cpf"
-        autocomplete="off" placeholder="000.000.000-00" matInput>
+      <input cdkFocusInitial formControlName="cpf" autocomplete="off" placeholder="000.000.000-00" matInput>
 
       <mat-icon [icIcon]="icShield" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
     </mat-form-field>
@@ -32,6 +31,13 @@
       <mat-icon [icIcon]="icCake" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
     </mat-form-field>
   </mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input disabled readonly formControlName="email" matInput>
+
+    <mat-icon [icIcon]="icPerson" class="ltr:mr-3 rtl:ml-3" matPrefix></mat-icon>
+  </mat-form-field>
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close type="button">CANCELAR</button>

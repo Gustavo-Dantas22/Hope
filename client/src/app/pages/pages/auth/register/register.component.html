@@ -25,6 +25,7 @@
             <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
             <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
           </button>
+          <mat-error>Senha inválida! A senha deve conter mais de 6 e menos de 12 caracteres</mat-error>
           <mat-hint>Clique no olho para visualizar a senha</mat-hint>
         </mat-form-field>
 
@@ -40,7 +41,9 @@
       </div>
 
       <div fxLayout="row" fxLayoutAlign="center center">
-        <mat-checkbox class="caption">Eu aceito os <a>termos e condições</a></mat-checkbox>
+        <mat-checkbox formControlName="termoDeUso" class="caption">Eu aceito os <strong><a href="javascript:void(0);"
+              onclick="javascipt:window.open('assets/documents/Termos_de_Uso-convertido.pdf');" class="popup">termos e
+              condições</a></strong></mat-checkbox>
       </div>
       <button (click)="send()" color="primary" mat-raised-button type="button">
         CRIAR CONTA

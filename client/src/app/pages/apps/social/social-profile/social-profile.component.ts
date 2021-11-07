@@ -20,8 +20,6 @@ import { SocialService } from '../social.service';
 import icPerson from '@iconify/icons-ic/twotone-person';
 import icShield from '@iconify/icons-ic/twotone-shield';
 import icCake from '@iconify/icons-ic/cake';
-
-
 @Component({
   selector: 'vex-social-profile',
   templateUrl: './social-profile.component.html',

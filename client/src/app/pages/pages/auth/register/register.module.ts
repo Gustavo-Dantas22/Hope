@@ -1,6 +1,6 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,7 +12,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
@@ -21,6 +20,7 @@ import { IconModule } from '@visurel/iconify-angular';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSnackBarModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,

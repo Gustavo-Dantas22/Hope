@@ -25,7 +25,8 @@ export class SintomasEditComponent implements OnInit {
     this.sintomasForm = this._fb.group({
       id: ['', Validators.required],
       nome: ['', Validators.required],
-      duracao: ['', Validators.required],
+      dataInicio: ['', Validators.required],
+      dataFim: ['', Validators.required],
       observacao: ['', Validators.required],
       email: [localStorage.getItem('HopeUserEmail'), Validators.required]
     });

@@ -44,7 +44,7 @@ export class MedicamentoSintomasService {
             name: remedio.nome,
             times: remedio.recorrencia,
             id: remedio.id
-        }
+        };
 
         return this.http.post('http://localhost:5000/medicine/remove', remedioToRemoveModel);
     }
@@ -57,9 +57,9 @@ export class MedicamentoSintomasService {
             recurringHours: remedio.recorrencia,
             medicineFrequency: +remedio.frequencia,
             times: remedio.times,
-            email: email,
+            email,
             id: remedio.id
-        }
+        };
 
         return this.http.post('http://localhost:5000/medicine', remedioModel);
     }

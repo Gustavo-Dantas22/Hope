@@ -64,7 +64,9 @@
 
           <h2 class="headline my-6">{{sintoma.nome}}</h2>
 
-          <div class="body-1">{{sintoma.duracao}}</div>
+          <div class="body-1">Data Início: {{dateFormatter(sintoma.dataInicio)}}</div>
+          <div class="body-1">Data Fim: {{dateFormatter(sintoma.dataFim)}}</div>
+
           <div class="body-1">{{sintoma.observacao}}</div>
 
           <div fxLayout="row" fxLayoutAlign="center center" class="p-6">

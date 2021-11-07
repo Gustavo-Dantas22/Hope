@@ -14,8 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatMenuModule } from '@angular/material/menu';
 import { ScrollbarModule } from '../../../../@vex/components/scrollbar/scrollbar.module';
-
-
 @NgModule({
   declarations: [ChatComponent],
   imports: [
