@@ -23,10 +23,6 @@ const routes: VexRoutes = [
     loadChildren: () => import('./pages/pages/auth/confirm-reset-password/confirm-reset-password.module').then(m => m.ConfirmResetPasswordModule),
   },
   {
-    path: 'coming-soon',
-    loadChildren: () => import('./pages/pages/coming-soon/coming-soon.module').then(m => m.ComingSoonModule),
-  },
-  {
     path: '',
     component: CustomLayoutComponent,
     children: [
@@ -49,37 +45,9 @@ const routes: VexRoutes = [
             }
           },
           {
-            path: 'mail',
-            loadChildren: () => import('./pages/apps/mail/mail.module').then(m => m.MailModule),
-            data: {
-              toolbarShadowEnabled: true,
-              scrollDisabled: true
-            }
-          },
-          {
             path: 'social',
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
-          },
-          {
-            path: 'contacts',
-            loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
-          },
-          {
-            path: 'aio-table',
-            loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-          },
-          {
-            path: 'help-center',
-            loadChildren: () => import('./pages/apps/help-center/help-center.module').then(m => m.HelpCenterModule),
-          },
-          {
-            path: 'scrumboard',
-            loadChildren: () => import('./pages/apps/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
-          },
-          {
-            path: 'editor',
-            loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
-          },
+          }
         ],
         canActivate: [AuthGuardService]
       },
@@ -95,18 +63,6 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/pages/humor/humor.module').then(m => m.HumorModule)
           },
           {
-            path: 'faq',
-            loadChildren: () => import('./pages/pages/faq/faq.module').then(m => m.FaqModule)
-          },
-          {
-            path: 'guides',
-            loadChildren: () => import('./pages/pages/guides/guides.module').then(m => m.GuidesModule)
-          },
-          {
-            path: 'invoice',
-            loadChildren: () => import('./pages/pages/invoice/invoice.module').then(m => m.InvoiceModule)
-          },
-          {
             path: 'error-404',
             loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module)
           },
@@ -115,43 +71,6 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/pages/errors/error-500/error-500.module').then(m => m.Error500Module)
           }
         ],
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'ui',
-        children: [
-          {
-            path: 'components',
-            loadChildren: () => import('./pages/ui/components/components.module').then(m => m.ComponentsModule),
-          },
-          {
-            path: 'forms/form-elements',
-            loadChildren: () => import('./pages/ui/forms/form-elements/form-elements.module').then(m => m.FormElementsModule),
-            data: {
-              containerEnabled: true
-            }
-          },
-          {
-            path: 'forms/form-wizard',
-            loadChildren: () => import('./pages/ui/forms/form-wizard/form-wizard.module').then(m => m.FormWizardModule),
-            data: {
-              containerEnabled: true
-            }
-          },
-          {
-            path: 'icons',
-            loadChildren: () => import('./pages/ui/icons/icons.module').then(m => m.IconsModule)
-          },
-          {
-            path: 'page-layouts',
-            loadChildren: () => import('./pages/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule),
-          },
-        ],
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'documentation',
-        loadChildren: () => import('./pages/documentation/documentation.module').then(m => m.DocumentationModule),
         canActivate: [AuthGuardService]
       },
       {

@@ -8,8 +8,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import { IconModule } from '@visurel/iconify-angular';
 import { MatRippleModule } from '@angular/material/core';
-import { ChatConversationComponent } from './chat-conversation/chat-conversation.component';
-import { ChatEmptyComponent } from './chat-empty/chat-empty.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +17,7 @@ import { ScrollbarModule } from '../../../../@vex/components/scrollbar/scrollbar
 
 
 @NgModule({
-  declarations: [ChatComponent, ChatConversationComponent, ChatEmptyComponent],
+  declarations: [ChatComponent],
   imports: [
     CommonModule,
     ChatRoutingModule,
