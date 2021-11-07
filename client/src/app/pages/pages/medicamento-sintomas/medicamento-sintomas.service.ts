@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { SwPush } from '@angular/service-worker';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Remedios } from 'src/app/models/remedios.model';

@@ -1,7 +1,7 @@
 export enum Humor {
-    Alegria = 1,
-    Medo = 2,
-    Raiva = 3,
-    Tristeza = 4,
-    Confusao = 5
+    Alegria = 0,
+    Assustado = 1,
+    Raiva = 2,
+    Tristeza = 3,
+    Confusao = 4
 }

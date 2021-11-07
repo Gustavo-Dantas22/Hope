@@ -1,5 +1,6 @@
 export interface Humor {
+    id?: string;
     email: string;
     idHumor: number;
-    data: Date;
+    data: string;
 }
